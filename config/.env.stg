@@ -1,0 +1,4 @@
+DB_PORT=5432
+DB_USERNAME=root
+DB_PASSWORD=root
+DB_NAME=airmee_db

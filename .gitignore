@@ -1,0 +1,17 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+.build
+
+.nyc_output
+.idea
+
+coverage
+
+package-lock.json
+
+out-logger.json

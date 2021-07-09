@@ -1,0 +1,18 @@
+# to start stop and to check status of docker
+systemctl start docker.socket
+systemctl stop docker.socket
+systemctl status docker.socket
+
+# start docker compose for pgadmin and postgres
+docker-compose -f airmee-docker-compose.yml up
+
+# to list all the running docker container
+docker ps
+
+# to delete all the containers
+ sudo docker container rm $(sudo docker ps -a -q)
+
+# get the ip of postgress
+docker inspect container-id-of-postgres | grep IPAddress
+
+# other docker commands link: https://github.com/prameshbhattarai/docker-commands

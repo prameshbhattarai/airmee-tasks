@@ -1,0 +1,26 @@
+service: airmee-tech-task
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    NODE_ENV: dev
+
+plugins:
+  - serverless-plugin-typescript 
+  - serverless-offline
+
+package:
+  exclude:
+    - config/.env.stg
+    - config/.env.pro
+  include:
+    - config/.env.dev
+
+functions:
+  availableSchedules:
+    handler: app/handler.availableSchedules
+    events:
+      - http:
+          path: schedules/{retailerId}/{areaId}/{timestamp}
+          method: get
