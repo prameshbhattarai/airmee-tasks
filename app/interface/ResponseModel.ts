@@ -1,5 +1,5 @@
 /**
- * Generic Response object.
+ * Wrapper Response object.
  */
 export interface ResponseModel {
     statusCode: number;

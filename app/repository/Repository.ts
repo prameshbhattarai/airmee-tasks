@@ -12,10 +12,10 @@ export class Repository {
         const connectionPool = await createConnectionPool();
         const response: QueryResult = await connectionPool.query(query.query, {params: query.params});
         await connectionPool.close();
-        return this.mapQueryResultToResponse(response);
+        return this.mapRowWithFields(response);
     }
 
-    private static mapQueryResultToResponse(queryResponse: QueryResult): any {
+    private static mapRowWithFields(queryResponse: QueryResult): any {
         const objectKeys = queryResponse.fields.map((field: FieldInfo) => field.fieldName);
         const object = new Array<any>();
         queryResponse.rows.forEach((row: Array<any>) => {

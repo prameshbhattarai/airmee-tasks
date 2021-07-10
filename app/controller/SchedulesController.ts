@@ -1,6 +1,6 @@
 import {SchedulesService} from "../service/SchedulesService";
 import {Response} from "../utils/Response";
-import {ResponseModel} from "../utils/ResponseModel";
+import {ResponseModel} from "../interface/ResponseModel";
 
 export class SchedulesController {
 

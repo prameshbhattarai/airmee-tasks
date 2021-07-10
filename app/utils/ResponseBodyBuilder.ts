@@ -11,7 +11,7 @@ export class ResponseBodyBuilder {
      * Serverless:
      * According to the API Gateway specs, the body content must be stringified
      */
-    bodyToString () {
+    public bodyToString () {
         return {
             statusCode: this.statusCode,
             body: JSON.stringify({

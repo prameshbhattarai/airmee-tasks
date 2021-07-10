@@ -1,4 +1,4 @@
-import {ResponseModel} from "./ResponseModel";
+import {ResponseModel} from "../interface/ResponseModel";
 import {ResponseBodyBuilder} from "./ResponseBodyBuilder";
 
 /**
@@ -6,12 +6,12 @@ import {ResponseBodyBuilder} from "./ResponseBodyBuilder";
  */
 export class Response {
 
-  static success(data: any): ResponseModel {
+  public static success(data: any): ResponseModel {
     const result = new ResponseBodyBuilder(200, 'success', data);
     return result.bodyToString();
   }
 
-  static error(message: string, statusCode = 500): ResponseModel {
+  public static error(message: string, statusCode = 500): ResponseModel {
     const result = new ResponseBodyBuilder(statusCode, message);
     return result.bodyToString();
   }
