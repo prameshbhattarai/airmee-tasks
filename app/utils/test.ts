@@ -1,4 +1,3 @@
-
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 import isBetween from 'dayjs/plugin/isBetween';
@@ -11,7 +10,7 @@ dayjs.extend(isBetween);
     console.log(dayjs().isoWeekday());
     console.log(dayjs().isoWeekYear());
 
-    console.log(dayjs.unix(12).get('year') );
+    console.log(dayjs.unix(12).get('year'));
 
     const currentDate = dayjs.unix(1625901641);
     const dayFormat = new Array<string>();

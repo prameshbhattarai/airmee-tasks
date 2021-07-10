@@ -11,7 +11,7 @@ export interface DbConnection {
 export async function createConnectionPool(): Promise<Pool> {
   try {
     const options = createConnectionOptions();
-    return new Pool ({
+    return new Pool({
       max: 20,
       idleTimeoutMillis: 30000,
       host: `postgres://${options.username}:${options.password}@${options.host}:${options.port}/${options.database}`
@@ -22,7 +22,7 @@ export async function createConnectionPool(): Promise<Pool> {
 }
 
 function createConnectionOptions(): DbConnection {
-  return  {
+  return {
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT, 10),
     username: process.env.DB_USERNAME,
