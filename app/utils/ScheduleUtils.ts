@@ -40,15 +40,15 @@ export class ScheduleUtils {
    */
   public static getNextWeekDays(timestamp: string): Array<Dayjs> {
     const _timestamp = parseInt(timestamp, 10);
-    const currentDate = dayjs.unix(_timestamp);
+    const _dayjs = dayjs.unix(_timestamp).utc();
+
+    const currentWeekStartDate = _dayjs.startOf('week');
+    const nextWeekStartDate = currentWeekStartDate.add(1, 'week');
 
     const dayFormat = new Array<Dayjs>();
-
-    for (let i = 0; i <= 7; i++) {
-      const day = currentDate.add(i, 'day');
-      dayFormat[day.isoWeekday() - 1] = day.utc();
+    for (let i = 0; i < 7; i++) {
+      dayFormat[i] = nextWeekStartDate.add(i, 'day');
     }
-
     return dayFormat;
   }
 }

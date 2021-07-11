@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS schedules_and_prices.holiday_schedules_and_prices
  price_currency text default 'SEK');
 
 -- delivery for holidays
+-- month will start from 0-11
 INSERT INTO schedules_and_prices.holiday_schedules_and_prices(retailer_id, date, month,
                                                       delivery_start_window_hours, delivery_start_window_minutes, delivery_stop_window_hours, delivery_stop_window_minutes)
 SELECT id, 24, 11, 17, 0, 22, 0 FROM admin.vendor_stores

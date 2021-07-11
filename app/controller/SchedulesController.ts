@@ -12,6 +12,7 @@ export class SchedulesController {
 
   /**
    * Get all available schedules for provided retailerId, areaId, and, timestamp.
+   * Endpoint: /schedules/{retailerId}/{areaId}/timestamp
    * @param event
    */
   public async getAvailableSchedules(event: any): Promise<ResponseModel> {

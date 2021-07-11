@@ -50,7 +50,7 @@ describe('Scheduler Service test specs', () => {
   it('should return 7 days available schedules for next week', async () => {
     const retailerId = '5dd023f6-e094-11eb-a011-e7052009774e';
     const areaId = '5dcf0890-e094-11eb-a011-7b57e06d8376';
-    const timestamp = '1625980000';
+    const timestamp = '1625998555';
     const numberOfDays = 7;
 
     const availableSchedules = availableSchedulesForRetailerAndArea(retailerId, areaId, numberOfDays);
@@ -69,51 +69,51 @@ describe('Scheduler Service test specs', () => {
     const expectedResponse = [
       {
         "currency": "SEK",
-        "dropOffEarliestTime": 1626109240000,
-        "dropOffInterval": "12 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626127240000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626195640000,
-        "dropOffInterval": "13 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626213640000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626282040000,
-        "dropOffInterval": "14 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626300040000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626368440000,
-        "dropOffInterval": "15 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626386440000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626454840000,
-        "dropOffInterval": "16 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626472840000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626541240000,
-        "dropOffInterval": "17 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626559240000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626627640000,
+        "dropOffEarliestTime": 1626627600000,
         "dropOffInterval": "18 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626645640000,
+        "dropOffLatestTime": 1626645600000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626714000000,
+        "dropOffInterval": "19 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626732000000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626800400000,
+        "dropOffInterval": "20 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626818400000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626886800000,
+        "dropOffInterval": "21 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626904800000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626973200000,
+        "dropOffInterval": "22 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626991200000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1627059600000,
+        "dropOffInterval": "23 Jul 17:00-22:00",
+        "dropOffLatestTime": 1627077600000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1627146000000,
+        "dropOffInterval": "24 Jul 17:00-22:00",
+        "dropOffLatestTime": 1627164000000,
         "price": 59
       }
     ];
@@ -143,23 +143,23 @@ describe('Scheduler Service test specs', () => {
     const expectedResponse = [
       {
         "currency": "SEK",
-        "dropOffEarliestTime": 1626109240000,
-        "dropOffInterval": "12 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626127240000,
+        "dropOffEarliestTime": 1626627600000,
+        "dropOffInterval": "18 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626645600000,
         "price": 59
       },
       {
         "currency": "SEK",
-        "dropOffEarliestTime": 1626195640000,
-        "dropOffInterval": "13 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626213640000,
+        "dropOffEarliestTime": 1626714000000,
+        "dropOffInterval": "19 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626732000000,
         "price": 59
       },
       {
         "currency": "SEK",
-        "dropOffEarliestTime": 1626282040000,
-        "dropOffInterval": "14 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626300040000,
+        "dropOffEarliestTime": 1626800400000,
+        "dropOffInterval": "20 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626818400000,
         "price": 59
       }
     ];
@@ -189,51 +189,51 @@ describe('Scheduler Service test specs', () => {
     const expectedResponse = [
       {
         "currency": "SEK",
-        "dropOffEarliestTime": 1626109240000,
-        "dropOffInterval": "12 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626127240000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626195640000,
-        "dropOffInterval": "13 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626213640000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626258640000,
-        "dropOffInterval": "14 Jul 10:30-22:30",
-        "dropOffLatestTime": 1626301840000,
-        "price": 100
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626345040000,
-        "dropOffInterval": "15 Jul 10:30-22:30",
-        "dropOffLatestTime": 1626388240000,
-        "price": 100
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626454840000,
-        "dropOffInterval": "16 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626472840000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626541240000,
-        "dropOffInterval": "17 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626559240000,
-        "price": 59
-      },
-      {
-        "currency": "SEK",
-        "dropOffEarliestTime": 1626627640000,
+        "dropOffEarliestTime": 1626627600000,
         "dropOffInterval": "18 Jul 17:00-22:00",
-        "dropOffLatestTime": 1626645640000,
+        "dropOffLatestTime": 1626645600000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626714000000,
+        "dropOffInterval": "19 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626732000000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626777000000,
+        "dropOffInterval": "20 Jul 10:30-22:30",
+        "dropOffLatestTime": 1626820200000,
+        "price": 100
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626863400000,
+        "dropOffInterval": "21 Jul 10:30-22:30",
+        "dropOffLatestTime": 1626906600000,
+        "price": 100
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1626973200000,
+        "dropOffInterval": "22 Jul 17:00-22:00",
+        "dropOffLatestTime": 1626991200000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1627059600000,
+        "dropOffInterval": "23 Jul 17:00-22:00",
+        "dropOffLatestTime": 1627077600000,
+        "price": 59
+      },
+      {
+        "currency": "SEK",
+        "dropOffEarliestTime": 1627146000000,
+        "dropOffInterval": "24 Jul 17:00-22:00",
+        "dropOffLatestTime": 1627164000000,
         "price": 59
       }
     ];

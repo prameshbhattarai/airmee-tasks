@@ -27,7 +27,7 @@ export const availableHolidaySchedulesForRetailer = (retailerId: string) => {
     availableSchedules.push(
       {
         "retailer_id": retailerId,
-        "date": 14,
+        "date": 20,
         "month": 6,
         "delivery_start_window_hours": 10,
         "delivery_start_window_minutes": 30,
@@ -38,7 +38,7 @@ export const availableHolidaySchedulesForRetailer = (retailerId: string) => {
       },
       {
         "retailer_id": retailerId,
-        "date": 15,
+        "date": 21,
         "month": 6,
         "delivery_start_window_hours": 10,
         "delivery_start_window_minutes": 30,
