@@ -8,4 +8,6 @@ export interface ScheduleModel {
   dropOffEarliestTime?: number;
   dropOffLatestTime?: number;
   dropOffInterval?: string;
+  price?: number;
+  currency?: string;
 }

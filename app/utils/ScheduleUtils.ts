@@ -6,8 +6,15 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(isoWeek);
 dayjs.extend(utc);
 
+/**
+ * Utility class for Schedules class.
+ */
 export class ScheduleUtils {
 
+  /**
+   * Validating provided uuid.
+   * @param keyValues
+   */
   public static validateUuids(keyValues: any) {
     for (const [key, value] of Object.entries(keyValues)) {
       if (!validate(value.toString())) {
@@ -27,7 +34,11 @@ export class ScheduleUtils {
     }
   }
 
-  public static getNextDays(timestamp: string): Array<Dayjs> {
+  /**
+   * Generate next week dates starting from provided timestamp.
+   * @param timestamp {timestamp}
+   */
+  public static getNextWeekDays(timestamp: string): Array<Dayjs> {
     const _timestamp = parseInt(timestamp, 10);
     const currentDate = dayjs.unix(_timestamp);
 

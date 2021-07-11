@@ -7,6 +7,9 @@ export interface Query {
   params?: Array<string>
 }
 
+/**
+ * Repository Class Implementation.
+ */
 export class RepositoryImpl implements Repository{
 
   /**

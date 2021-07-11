@@ -8,6 +8,9 @@ export interface DbConnection {
   database: string;
 }
 
+/**
+ * Function to provide database connection pool.
+ */
 export async function createConnectionPool(): Promise<Pool> {
   try {
     const options = createConnectionOptions();
@@ -21,6 +24,9 @@ export async function createConnectionPool(): Promise<Pool> {
   }
 }
 
+/**
+ * Extract database properties from environment file.
+ */
 function createConnectionOptions(): DbConnection {
   return {
     host: process.env.DB_HOST,

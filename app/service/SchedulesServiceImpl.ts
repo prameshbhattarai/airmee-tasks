@@ -1,4 +1,3 @@
-import {Query} from "../repository/RepositoryImpl";
 import dayjs, {Dayjs} from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import {ScheduleUtils} from "../utils/ScheduleUtils";
@@ -6,45 +5,17 @@ import {ScheduleModel} from "../interface/ScheduleModel";
 import utc from "dayjs/plugin/utc";
 import {SchedulesService} from "./SchedulesService";
 import {Repository} from "../repository/Repository";
+import {QueryUtils} from "../utils/QueryUtils";
 
 dayjs.extend(duration);
 dayjs.extend(utc);
 
+/**
+ * Schedules Service Class Implementation.
+ */
 export class SchedulesServiceImpl implements SchedulesService {
 
   constructor(private readonly repository: Repository) {
-  }
-
-  /**
-   * Create query to fetch all schedules by retailerId and areaId.
-   * @param retailerId
-   * @param areaId
-   * @private
-   */
-  private static createQueryToGetSchedulesByRetailerIdAndAreaId(retailerId: string, areaId: string): Query {
-    return {
-      query: `select sp.retailer_id,
-                     sp.day_of_week,
-                     sp.delivery_start_window_hours,
-                     sp.delivery_start_window_minutes,
-                     sp.delivery_stop_window_hours,
-                     sp.delivery_stop_window_minutes,
-                     sp.price,
-                     sp.price_currency,
-
-                     vs.area_id,
-                     vs.store_name,
-                     vs.store_email,
-
-                     sa.area_name,
-                     sa.area_geometry
-              from schedules_and_prices.schedules_and_prices sp
-                       inner join admin.vendor_stores vs on sp.retailer_id = vs.id
-                       inner join service.areas sa on vs.area_id = sa.id
-              where sp.retailer_id = $1
-                and vs.area_id = $2`,
-      params: [retailerId, areaId]
-    }
   }
 
   /**
@@ -65,8 +36,8 @@ export class SchedulesServiceImpl implements SchedulesService {
    * @param timestamp
    * @private
    */
-  private static mapResultsToScheduleModel(results: Array<any>, timestamp: string): Array<ScheduleModel> {
-    const nextWeekDays = ScheduleUtils.getNextDays(timestamp);
+  private static mapResultsToScheduleModel(results: Array<Array<any>>, timestamp: string): Array<ScheduleModel> {
+    const nextWeekDays = ScheduleUtils.getNextWeekDays(timestamp);
 
     const formatTime = (_date: Dayjs, hour: number, minutes: number) => {
       return _date.set("hour", hour).set("minutes", minutes).toDate().getTime()
@@ -78,18 +49,47 @@ export class SchedulesServiceImpl implements SchedulesService {
       return _date.format('D MMM').concat(` ${startHour}:${_startMinute}-${stopHour}:${_stopMinute}`);
     }
 
-    return results.map((result: any) => {
+    const availableSchedulesResults = results[0];
+    const holidaySchedulesResults = results[1];
+
+    return availableSchedulesResults.map((result: any) => {
       const date = nextWeekDays[result['day_of_week'] as number];
+
+      const holidaySchedule = this.getHolidaySchedule(date.date(), date.month(), holidaySchedulesResults);
+      if(holidaySchedule) {
+        result = holidaySchedule;
+      }
+
       const deliveryStartHours = result['delivery_start_window_hours'] as number;
       const deliveryStartMinutes = result['delivery_start_window_minutes'] as number;
       const deliveryStopHours = result['delivery_stop_window_hours'] as number;
       const deliveryStopMinutes = result['delivery_stop_window_minutes'] as number;
+      const price = result['price'] as number;
+      const currency = result['price_currency'];
       return {
         dropOffEarliestTime: formatTime(date, deliveryStartHours, deliveryStartMinutes),
         dropOffLatestTime: formatTime(date, deliveryStopHours, deliveryStopMinutes),
-        dropOffInterval: formatInterval(date, deliveryStartHours, deliveryStartMinutes, deliveryStopHours, deliveryStartMinutes)
+        dropOffInterval: formatInterval(date, deliveryStartHours, deliveryStartMinutes, deliveryStopHours, deliveryStartMinutes),
+        price,
+        currency
       } as ScheduleModel;
     }).filter((scheduleModel: ScheduleModel) => scheduleModel).sort((sm1: ScheduleModel, sm2: ScheduleModel) => sm1.dropOffEarliestTime - sm2.dropOffEarliestTime);
+  }
+
+  /**
+   * Get the schedule for holiday for provided month and date.
+   * @param date {number}
+   * @param month {number}
+   * @param holidaySchedulesResults
+   * @private
+   */
+  private static getHolidaySchedule(date: number, month: number, holidaySchedulesResults: Array<any>): any {
+    for (let i = 0; i < holidaySchedulesResults.length; i++) {
+      const result = holidaySchedulesResults[i];
+      if (result['date'] === date && result['month'] === month) {
+        return result;
+      }
+    }
   }
 
   /**
@@ -100,7 +100,13 @@ export class SchedulesServiceImpl implements SchedulesService {
    */
   public async getAvailableSchedules(retailerId: string, areaId: string, timestamp: string): Promise<Array<ScheduleModel>> {
     SchedulesServiceImpl.validateUuidAndTimestamp(retailerId, areaId, timestamp);
-    const results = await this.repository.query(SchedulesServiceImpl.createQueryToGetSchedulesByRetailerIdAndAreaId(retailerId, areaId));
+    const availableSchedules = QueryUtils.createQueryToGetSchedulesByRetailerIdAndAreaId(retailerId, areaId);
+    const holidayAvailableSchedules = QueryUtils.createQueryToGetHolidaySchedulesByRetailerId(retailerId);
+
+    const results = await Promise.all([
+      this.repository.query(availableSchedules),
+      this.repository.query(holidayAvailableSchedules)
+    ])
 
     return SchedulesServiceImpl.mapResultsToScheduleModel(results, timestamp);
   }

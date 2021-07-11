@@ -4,10 +4,11 @@
     <testCase name="Scheduler Service test specs should throw exception if uuid is invalid" duration="16"/>
     <testCase name="Scheduler Service test specs should throw exception if timestamp is invalid or less than 2015" duration="2"/>
     <testCase name="Scheduler Service test specs should return 7 days available schedules for next week" duration="4"/>
-    <testCase name="Scheduler Service test specs should return only 3 days available schedules for next week" duration="1"/>
+    <testCase name="Scheduler Service test specs should return only 3 days available schedules for next week" duration="2"/>
+    <testCase name="Scheduler Service test specs should return 7 days available schedules with holiday schedules for next week" duration="1"/>
   </file>
   <file path="/home/pramesh/Documents/workspace/warmup/airmee_tech_task/tests/controller/SchedulesController.test.ts">
-    <testCase name="Scheduler Controller test specs should return success response" duration="2"/>
+    <testCase name="Scheduler Controller test specs should return success response" duration="1"/>
     <testCase name="Scheduler Controller test specs should return error response" duration="1"/>
   </file>
 </testExecutions>

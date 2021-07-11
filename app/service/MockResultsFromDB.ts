@@ -17,7 +17,36 @@ export const availableSchedulesForRetailerAndArea = (retailerId: string, areaId:
         "area_name": "Stockholm",
         "area_geometry": "random polygon"
       }
-    )
+    );
   }
+  return availableSchedules;
+}
+
+export const availableHolidaySchedulesForRetailer = (retailerId: string) => {
+  const availableSchedules = new Array<any>();
+    availableSchedules.push(
+      {
+        "retailer_id": retailerId,
+        "date": 14,
+        "month": 6,
+        "delivery_start_window_hours": 10,
+        "delivery_start_window_minutes": 30,
+        "delivery_stop_window_hours": 22,
+        "delivery_stop_window_minutes": 30,
+        "price": 100,
+        "price_currency": "SEK"
+      },
+      {
+        "retailer_id": retailerId,
+        "date": 15,
+        "month": 6,
+        "delivery_start_window_hours": 10,
+        "delivery_start_window_minutes": 30,
+        "delivery_stop_window_hours": 22,
+        "delivery_stop_window_minutes": 30,
+        "price": 100,
+        "price_currency": "SEK"
+      }
+    );
   return availableSchedules;
 }
