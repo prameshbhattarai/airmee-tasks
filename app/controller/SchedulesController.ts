@@ -1,6 +1,6 @@
-import {SchedulesService} from "../service/SchedulesService";
 import {Response} from "../utils/Response";
 import {ResponseModel} from "../interface/ResponseModel";
+import {SchedulesService} from "../service/SchedulesService";
 
 export class SchedulesController {
 
@@ -8,8 +8,8 @@ export class SchedulesController {
   }
 
   public async getAvailableSchedules(event: any): Promise<ResponseModel> {
-    const {retailerId, areaId, timestamp} = event.pathParameters;
     try {
+      const {retailerId, areaId, timestamp} = event.pathParameters;
       const response = await this.schedulesService.getAvailableSchedules(retailerId, areaId, timestamp);
       return Response.success(response);
     } catch (error) {

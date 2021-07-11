@@ -9,5 +9,5 @@ module.exports = {
   testEnvironment: 'node',
   testResultsProcessor: 'jest-sonar-reporter',
   collectCoverage: !process.argv.includes('--watch'),
-  collectCoverageFrom: ['src/**/*.ts', '!**/node_modules/**', '!src/legacy/*']
+  collectCoverageFrom: ['app/**/*.ts']
 };
