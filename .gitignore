@@ -4,13 +4,17 @@ node_modules
 # Serverless directories
 .serverless
 
+# ignore docker db volume
+db/data
+
+# serverless build file
 .build
 
-.nyc_output
+# intellij config
 .idea
 
-coverage
-
+# package-lock file
 package-lock.json
 
-out-logger.json
+# test report coverage
+coverage

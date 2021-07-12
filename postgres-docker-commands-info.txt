@@ -1,3 +1,6 @@
+# i am using docker for installing postgreSQL and pgAdmin
+# we should have installed docker and docker-compose for using airmee-docker-compose.yml
+
 # to start stop and to check status of docker
 systemctl start docker.socket
 systemctl stop docker.socket
@@ -10,9 +13,12 @@ docker-compose -f airmee-docker-compose.yml up
 docker ps
 
 # to delete all the containers
- sudo docker container rm $(sudo docker ps -a -q)
+sudo docker container rm $(sudo docker ps -a -q)
 
 # get the ip of postgress
 docker inspect container-id-of-postgres | grep IPAddress
+
+# to clean up docker-compose volumes
+docker-compose -f airmee-docker-compose.yml down --volumes
 
 # other docker commands link: https://github.com/prameshbhattarai/docker-commands

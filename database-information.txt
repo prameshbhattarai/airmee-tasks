@@ -1,0 +1,12 @@
+I am using docker for running postgreSQL and pgAdmin locally.
+docker-compose file ->  airmee-docker-compose.yml
+
+I have configured the docker-compose file to initialize all the final init.sql scripts.
+Our final SQL file is in ./db/init.sql folder.
+
+If you are manually creating database then run the SQL script located in ./db/init-sql folder.
+It will initialize all the data to process our tasks.
+
+Update:
+I have created new table "holiday_schedules_and_prices" for storing delivery schedule for holidays.
+I have also added new column "area_name" in "vendor_stores" table.

@@ -40,10 +40,12 @@ export class SchedulesServiceImpl implements SchedulesService {
     const nextWeekDays = ScheduleUtils.getNextWeekDays(timestamp);
 
     const formatTime = (_date: Dayjs, hour: number, minutes: number) => {
+      if (hour == null || minutes == null) return null;
       return _date.set("hour", hour).set("minutes", minutes).toDate().getTime()
     }
 
     const formatInterval = (_date, startHour: number, startMinute: number, stopHour: number, stopMinute: number) => {
+      if (startHour == null || startMinute == null || stopHour == null || stopMinute == null) return '';
       const _startMinute = startMinute < 10 ? '0' + startMinute : startMinute;
       const _stopMinute = stopMinute < 10 ? '0' + stopMinute : stopMinute;
       return _date.format('D MMM').concat(` ${startHour}:${_startMinute}-${stopHour}:${_stopMinute}`);
@@ -55,21 +57,31 @@ export class SchedulesServiceImpl implements SchedulesService {
     return availableSchedulesResults.map((result: any) => {
       const date = nextWeekDays[result['day_of_week'] as number];
 
+      const pickUpStartHours = result['working_start_window_hours'] as number;
+      const pickUpStartMinutes = result['working_start_window_minutes'] as number;
+      const pickUpStopHours = result['working_stop_window_hours'] as number;
+      const pickUpStopMinutes = result['working_stop_window_minutes'] as number;
+
       const holidaySchedule = this.getHolidaySchedule(date.date(), date.month(), holidaySchedulesResults);
       if(holidaySchedule) {
         result = holidaySchedule;
       }
 
+      // if we have holiday then we will have different delivery process
       const deliveryStartHours = result['delivery_start_window_hours'] as number;
       const deliveryStartMinutes = result['delivery_start_window_minutes'] as number;
       const deliveryStopHours = result['delivery_stop_window_hours'] as number;
       const deliveryStopMinutes = result['delivery_stop_window_minutes'] as number;
+
       const price = result['price'] as number;
       const currency = result['price_currency'];
       return {
         dropOffEarliestTime: formatTime(date, deliveryStartHours, deliveryStartMinutes),
         dropOffLatestTime: formatTime(date, deliveryStopHours, deliveryStopMinutes),
         dropOffInterval: formatInterval(date, deliveryStartHours, deliveryStartMinutes, deliveryStopHours, deliveryStartMinutes),
+        pickUpEarliestTime: formatTime(date, pickUpStartHours, pickUpStartMinutes),
+        pickUpLatestTime: formatTime(date, pickUpStopHours, pickUpStopHours),
+        pickUpInterval: formatInterval(date, pickUpStartHours, pickUpStartMinutes, pickUpStopHours, pickUpStopMinutes),
         price,
         currency
       } as ScheduleModel;

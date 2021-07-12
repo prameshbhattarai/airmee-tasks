@@ -4,7 +4,7 @@ import {SchedulesServiceImpl} from "../../app/service/SchedulesServiceImpl";
 import {
   availableHolidaySchedulesForRetailer,
   availableSchedulesForRetailerAndArea
-} from "../../app/service/MockResultsFromDB";
+} from "../utils/MockResultsFromDB";
 
 const mockRepository: Repository = mock<Repository>();
 describe('Scheduler Service test specs', () => {
@@ -72,6 +72,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626627600000,
         "dropOffInterval": "18 Jul 17:00-22:00",
         "dropOffLatestTime": 1626645600000,
+        "pickUpEarliestTime": 1626595200000,
+        "pickUpInterval": "18 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626621300000,
         "price": 59
       },
       {
@@ -79,6 +82,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626714000000,
         "dropOffInterval": "19 Jul 17:00-22:00",
         "dropOffLatestTime": 1626732000000,
+        "pickUpEarliestTime": 1626681600000,
+        "pickUpInterval": "19 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626707700000,
         "price": 59
       },
       {
@@ -86,6 +92,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626800400000,
         "dropOffInterval": "20 Jul 17:00-22:00",
         "dropOffLatestTime": 1626818400000,
+        "pickUpEarliestTime": 1626768000000,
+        "pickUpInterval": "20 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626794100000,
         "price": 59
       },
       {
@@ -93,6 +102,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626886800000,
         "dropOffInterval": "21 Jul 17:00-22:00",
         "dropOffLatestTime": 1626904800000,
+        "pickUpEarliestTime": 1626854400000,
+        "pickUpInterval": "21 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626880500000,
         "price": 59
       },
       {
@@ -100,6 +112,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626973200000,
         "dropOffInterval": "22 Jul 17:00-22:00",
         "dropOffLatestTime": 1626991200000,
+        "pickUpEarliestTime": 1626940800000,
+        "pickUpInterval": "22 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626966900000,
         "price": 59
       },
       {
@@ -107,6 +122,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1627059600000,
         "dropOffInterval": "23 Jul 17:00-22:00",
         "dropOffLatestTime": 1627077600000,
+        "pickUpEarliestTime": 1627027200000,
+        "pickUpInterval": "23 Jul 8:00-15:00",
+        "pickUpLatestTime": 1627053300000,
         "price": 59
       },
       {
@@ -114,6 +132,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1627146000000,
         "dropOffInterval": "24 Jul 17:00-22:00",
         "dropOffLatestTime": 1627164000000,
+        "pickUpEarliestTime": 1627113600000,
+        "pickUpInterval": "24 Jul 8:00-15:00",
+        "pickUpLatestTime": 1627139700000,
         "price": 59
       }
     ];
@@ -146,6 +167,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626627600000,
         "dropOffInterval": "18 Jul 17:00-22:00",
         "dropOffLatestTime": 1626645600000,
+        "pickUpEarliestTime": 1626595200000,
+        "pickUpInterval": "18 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626621300000,
         "price": 59
       },
       {
@@ -153,6 +177,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626714000000,
         "dropOffInterval": "19 Jul 17:00-22:00",
         "dropOffLatestTime": 1626732000000,
+        "pickUpEarliestTime": 1626681600000,
+        "pickUpInterval": "19 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626707700000,
         "price": 59
       },
       {
@@ -160,6 +187,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626800400000,
         "dropOffInterval": "20 Jul 17:00-22:00",
         "dropOffLatestTime": 1626818400000,
+        "pickUpEarliestTime": 1626768000000,
+        "pickUpInterval": "20 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626794100000,
         "price": 59
       }
     ];
@@ -192,6 +222,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626627600000,
         "dropOffInterval": "18 Jul 17:00-22:00",
         "dropOffLatestTime": 1626645600000,
+        "pickUpEarliestTime": 1626595200000,
+        "pickUpInterval": "18 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626621300000,
         "price": 59
       },
       {
@@ -199,6 +232,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626714000000,
         "dropOffInterval": "19 Jul 17:00-22:00",
         "dropOffLatestTime": 1626732000000,
+        "pickUpEarliestTime": 1626681600000,
+        "pickUpInterval": "19 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626707700000,
         "price": 59
       },
       {
@@ -206,6 +242,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626777000000,
         "dropOffInterval": "20 Jul 10:30-22:30",
         "dropOffLatestTime": 1626820200000,
+        "pickUpEarliestTime": 1626768000000,
+        "pickUpInterval": "20 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626794100000,
         "price": 100
       },
       {
@@ -213,6 +252,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626863400000,
         "dropOffInterval": "21 Jul 10:30-22:30",
         "dropOffLatestTime": 1626906600000,
+        "pickUpEarliestTime": 1626854400000,
+        "pickUpInterval": "21 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626880500000,
         "price": 100
       },
       {
@@ -220,6 +262,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1626973200000,
         "dropOffInterval": "22 Jul 17:00-22:00",
         "dropOffLatestTime": 1626991200000,
+        "pickUpEarliestTime": 1626940800000,
+        "pickUpInterval": "22 Jul 8:00-15:00",
+        "pickUpLatestTime": 1626966900000,
         "price": 59
       },
       {
@@ -227,6 +272,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1627059600000,
         "dropOffInterval": "23 Jul 17:00-22:00",
         "dropOffLatestTime": 1627077600000,
+        "pickUpEarliestTime": 1627027200000,
+        "pickUpInterval": "23 Jul 8:00-15:00",
+        "pickUpLatestTime": 1627053300000,
         "price": 59
       },
       {
@@ -234,6 +282,9 @@ describe('Scheduler Service test specs', () => {
         "dropOffEarliestTime": 1627146000000,
         "dropOffInterval": "24 Jul 17:00-22:00",
         "dropOffLatestTime": 1627164000000,
+        "pickUpEarliestTime": 1627113600000,
+        "pickUpInterval": "24 Jul 8:00-15:00",
+        "pickUpLatestTime": 1627139700000,
         "price": 59
       }
     ];

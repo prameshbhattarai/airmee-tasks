@@ -1,0 +1,10 @@
+After configuring the PostgreSQL we can configure the backend part.
+
+We need to install nodejs and npm in our local machine.
+I am using nodejs v12.18.2 and npm version 6.14.8
+
+We need to define DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME in config file located in ./config/.env.dev file for developer stage.
+
+Currently our serverless-offline application will run in developer stage.
+
+Then run the npm install and then npm run local for testing it locally.

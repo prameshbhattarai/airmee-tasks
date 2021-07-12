@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/home/pramesh/Documents/workspace/warmup/airmee_tech_task/tests/service/SchedulerService.test.ts">
-    <testCase name="Scheduler Service test specs should throw exception if uuid is invalid" duration="15"/>
-    <testCase name="Scheduler Service test specs should throw exception if timestamp is invalid or less than 2015" duration="3"/>
-    <testCase name="Scheduler Service test specs should return 7 days available schedules for next week" duration="5"/>
+    <testCase name="Scheduler Service test specs should throw exception if uuid is invalid" duration="16"/>
+    <testCase name="Scheduler Service test specs should throw exception if timestamp is invalid or less than 2015" duration="6"/>
+    <testCase name="Scheduler Service test specs should return 7 days available schedules for next week" duration="4"/>
     <testCase name="Scheduler Service test specs should return only 3 days available schedules for next week" duration="2"/>
-    <testCase name="Scheduler Service test specs should return 7 days available schedules with holiday schedules for next week" duration="3"/>
+    <testCase name="Scheduler Service test specs should return 7 days available schedules with holiday schedules for next week" duration="2"/>
   </file>
   <file path="/home/pramesh/Documents/workspace/warmup/airmee_tech_task/tests/controller/SchedulesController.test.ts">
     <testCase name="Scheduler Controller test specs should return success response" duration="2"/>
